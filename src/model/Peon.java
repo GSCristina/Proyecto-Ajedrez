@@ -1,6 +1,10 @@
 package model;
 
-public class Peon extends Pieza0 {
+public class Peon extends Pieza {
+    public Peon(int fila, int columna, Color color, int valor, char caracter) {
+        super(fila, columna, color, valor, caracter);
+    }
+
     @Override
     public String toString() {
         return this.getColor() == Color.BLANCA ? "♙" : "♟";

@@ -5,11 +5,11 @@ import java.util.Objects;
 public abstract class Pieza {
     private int fila;
     private int columna;
-    private String color;
+    private Color color;
     private int valor;
     private char caracter;
 
-    public Pieza(int fila, int columna, String color, int valor, char caracter) {
+    public Pieza(int fila, int columna, Color color, int valor, char caracter) {
         this.fila = fila;
         this.columna = columna;
         this.color = color;
@@ -33,11 +33,11 @@ public abstract class Pieza {
         this.columna = columna;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
