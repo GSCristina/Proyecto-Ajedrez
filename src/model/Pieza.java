@@ -6,15 +6,11 @@ public abstract class Pieza {
     private int fila;
     private int columna;
     private Color color;
-    private int valor;
-    private char caracter;
 
-    public Pieza(int fila, int columna, Color color, int valor, char caracter) {
+    public Pieza(int fila, int columna, Color color) {
         this.fila = fila;
         this.columna = columna;
         this.color = color;
-        this.valor = valor;
-        this.caracter = caracter;
     }
 
     public int getFila() {
@@ -41,21 +37,6 @@ public abstract class Pieza {
         this.color = color;
     }
 
-    public int getValor() {
-        return valor;
-    }
-
-    public void setValor(int valor) {
-        this.valor = valor;
-    }
-
-    public char getCaracter() {
-        return caracter;
-    }
-
-    public void setCaracter(char caracter) {
-        this.caracter = caracter;
-    }
 
 
     /**
@@ -76,7 +57,7 @@ public abstract class Pieza {
     public boolean puedeAtacar(Pieza piezaEnemiga, Tablero tablero){
         if (piezaEnemiga==null) return false;
         if (this.color==piezaEnemiga.color) return false;
-        return puedeMover(piezaEnemiga.getFila(), piezaEnemiga.getColumna(), piezaEnemiga.getTablero());
+        return puedeMover(piezaEnemiga.getFila(), piezaEnemiga.getColumna(), tablero);
     }
 
 
@@ -110,17 +91,16 @@ public abstract class Pieza {
      */
     protected abstract char simbolo();
 
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Pieza pieza = (Pieza) o;
-        return fila == pieza.fila && columna == pieza.columna && valor == pieza.valor && caracter == pieza.caracter && Objects.equals(color, pieza.color);
+        return fila == pieza.fila && columna == pieza.columna && color == pieza.color;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fila, columna, color, valor, caracter);
+        return Objects.hash(fila, columna, color);
     }
 
     public String toString(){
