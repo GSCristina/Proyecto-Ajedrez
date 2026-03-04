@@ -61,6 +61,29 @@ public class Tablero implements Serializable {
         return null;
     }
 
+    /**
+     * Metodo con el cual obtenemos la puntuacion total de piezas vivas de un color
+     * @param color pasamos el color por parametro para que nos diga solo las de ese color Blancas o Negras
+     * @return devuelve la puntuacion total de piezas del mismo color (solo vivas)
+     */
+    public int obtenerPuntuacion(Color color) {
+        int puntosTotales = 0;
+
+        if (color == Color.BLANCA) {
+            for (Pieza p : piezasBlancas) {
+                puntosTotales += p.obtenerPuntosPieza();
+            }
+        }
+
+        else if (color == Color.NEGRA) {
+            for (Pieza p : piezasNegras) {
+                puntosTotales += p.obtenerPuntosPieza();
+            }
+        }
+
+        return puntosTotales;
+    }
+
     @Override
     public String toString() {
         String tableroDibujado = "";
