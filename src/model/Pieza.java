@@ -6,7 +6,7 @@ import java.io.Serializable;
 public abstract class Pieza implements Serializable {
     private int fila;
     private int columna;
-    private Color color;
+    private final Color color;
 
     /**
     Constructor que lanza excepción si se sobrepasa de las filas y columnas límites,
@@ -35,7 +35,15 @@ public abstract class Pieza implements Serializable {
         return fila;
     }
 
+    /**
+     * Setter que comprueba que la fila este comprendida entre 0 y 7, en el caso de que no,
+     * lanza una excepción.
+     * @param fila
+     */
     public void setFila(int fila) {
+        if (fila<0 || fila>7){
+            throw new IllegalArgumentException("La fila debe estar entre 0 y 7");
+        }
         this.fila = fila;
     }
 
@@ -43,7 +51,16 @@ public abstract class Pieza implements Serializable {
         return columna;
     }
 
+
+    /**
+     * Setter que comprueba que la colimna este comprendida entre 0 y 7, en el caso
+     * de que no, lanza una exepción.
+     * @param columna
+     */
     public void setColumna(int columna) {
+        if (columna<0 || columna>7){
+            throw new IllegalArgumentException("La columna debe estar entre 0 y 7");
+        }
         this.columna = columna;
     }
 
@@ -51,9 +68,6 @@ public abstract class Pieza implements Serializable {
         return color;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
 
 
 
@@ -87,6 +101,25 @@ public abstract class Pieza implements Serializable {
      * @param tablero
      */
     public void mover(int nuevaFila, int nuevaColumna, Tablero tablero) {
+        if (nuevaFila<0 || nuevaFila>7 || nuevaColumna<0 || nuevaColumna>7){
+            throw new IllegalArgumentException("No se puede mover la pieza fuera del tablero");
+        }
+        if (!puedeMover(nuevaFila,nuevaColumna,tablero)){
+            throw new IllegalArgumentException("Esta pieza no permite este movimiento");
+        }
+        Pieza piezaDestino = tablero.obtenerPieza(nuevaFila,nuevaColumna);
+        if (piezaDestino!=null){
+            if (piezaDestino instanceof Rey){
+                throw new IllegalArgumentException("No se puede atacar al rey");
+            }
+            if (piezaDestino.getColor()==this.color){
+                throw new IllegalArgumentException("No puedes atacar una pieza de tu mismo color");
+            }
+        }
+
+
+        this.fila=nuevaFila;
+        this.columna=nuevaColumna;
     }
 
 
