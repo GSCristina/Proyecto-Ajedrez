@@ -17,6 +17,10 @@ public class Tablero implements Serializable {
         inicializarTablero();
     }
 
+    /**
+     * Metodo con el que iniciamos una partida de ajedrez colocamos las fichas en la posicion que
+     * le corresponde a cada una y segun el color de estas
+     */
     private void inicializarTablero() {
 
         piezasNegras.add(new Torre(0, 0, Color.NEGRA));
@@ -45,6 +49,13 @@ public class Tablero implements Serializable {
         piezasBlancas.add(new Caballo(7, 6, Color.BLANCA));
         piezasBlancas.add(new Torre(7, 7, Color.BLANCA));
     }
+
+    /**
+     * Metodo que segun la fila y la columna nos dira que ficha la ocupa
+     * @param fila
+     * @param columna
+     * @return
+     */
     public Pieza obtenerPieza(int fila, int columna) {
 
         for (Pieza p : piezasBlancas) {
@@ -82,6 +93,19 @@ public class Tablero implements Serializable {
         }
 
         return puntosTotales;
+    }
+
+    /**Metodo que recibe una pieza y mirando su color la metera en la lista de piezasBlancas o piezasNegras.
+     * @param pieza le pasaremos la pieza que queremos añadir y segun su color la metera en una lista u otra
+     */
+    public void añadirPieza(Pieza pieza) {
+        if (pieza == null) return;
+
+        if (pieza.getColor() == Color.BLANCA) {
+            this.piezasBlancas.add(pieza);
+        } else if (pieza.getColor() == Color.NEGRA) {
+            this.piezasNegras.add(pieza);
+        }
     }
 
     @Override
