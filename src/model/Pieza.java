@@ -1,13 +1,27 @@
 package model;
 
 import java.util.Objects;
+import java.io.Serializable;
 
-public abstract class Pieza {
+public abstract class Pieza implements Serializable {
     private int fila;
     private int columna;
     private Color color;
 
+    /**
+    Constructor que lanza excepción si se sobrepasa de las filas y columnas límites,
+     además de comprobar que tenga asignado un color, lanzando excepción en caso negativo.
+     */
     public Pieza(int fila, int columna, Color color) {
+
+        if (fila < 0 || fila > 7 || columna < 0 || columna > 7) {
+            throw new IllegalArgumentException("La posición debe estar entre 0 y 7");
+        }
+
+        if (color == null) {
+            throw new IllegalArgumentException("El color no puede ser null");
+        }
+
         this.fila = fila;
         this.columna = columna;
         this.color = color;
