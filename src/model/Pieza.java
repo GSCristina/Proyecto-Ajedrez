@@ -14,7 +14,7 @@ public abstract class Pieza implements Serializable {
      */
     public Pieza(int fila, int columna, Color color) {
 
-        if (fila < 0 || fila > 7 || columna < 0 || columna > 7) {
+        if (comprobarCasillaValida(fila, columna)) {
             throw new IllegalArgumentException("La posición debe estar entre 0 y 7");
         }
 
@@ -25,6 +25,10 @@ public abstract class Pieza implements Serializable {
         this.fila = fila;
         this.columna = columna;
         this.color = color;
+    }
+
+    private static boolean comprobarCasillaValida(int fila, int columna) {
+        return fila < 0 || fila > 7 || columna < 0 || columna > 7;
     }
 
     public int getFila() {
