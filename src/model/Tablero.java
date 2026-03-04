@@ -73,6 +73,15 @@ public class Tablero implements Serializable {
     }
 
     /**
+     * Metodo para borrar todo el contenido de las lista de golpe.
+     */
+    public void vaciarPiezas() {
+        this.piezasBlancas.clear();
+        this.piezasNegras.clear();
+        this.piezasEliminadas.clear();
+    }
+
+    /**
      * Metodo con el cual obtenemos la puntuacion total de piezas vivas de un color
      * @param color pasamos el color por parametro para que nos diga solo las de ese color Blancas o Negras
      * @return devuelve la puntuacion total de piezas del mismo color (solo vivas)
