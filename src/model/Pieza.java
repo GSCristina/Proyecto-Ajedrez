@@ -117,9 +117,15 @@ public abstract class Pieza implements Serializable {
             }
         }
 
+        int filaActual = this.fila;
+        int columnaActual = this.columna;
+
+        tablero.colocarPieza(null, filaActual, columnaActual);
 
         this.fila=nuevaFila;
         this.columna=nuevaColumna;
+
+        tablero.colocarPieza(this, nuevaFila, nuevaColumna);
     }
 
 
