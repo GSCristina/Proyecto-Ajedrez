@@ -82,6 +82,14 @@ public class Tablero implements Serializable {
     }
 
     /**
+     * Metodo que reinicia el tablero usando el metodo "vaciarPiezas" e inicia una nueva partida
+     */
+    public void reiniciarTablero() {
+        vaciarPiezas();
+        inicializarTablero();
+    }
+
+    /**
      * Metodo con el cual obtenemos la puntuacion total de piezas vivas de un color
      * @param color pasamos el color por parametro para que nos diga solo las de ese color Blancas o Negras
      * @return devuelve la puntuacion total de piezas del mismo color (solo vivas)
