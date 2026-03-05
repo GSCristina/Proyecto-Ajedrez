@@ -12,6 +12,7 @@ public class Utils {
         return -1;
     }
 
+
     //Convertir número del ajedrez a fila de matriz ---> "numeroAFila" (static)
 
     static int numeroAFila(int numeroFilaAjedrez) {
