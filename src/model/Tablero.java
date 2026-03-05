@@ -148,6 +148,36 @@ public class Tablero implements Serializable {
 
         return copiaTablero;
     }
+    /**
+     * Metodo que mueve la pieza desde su posicion de origen (Fila y Columna) a una posicion destino si en el destino
+     * encuentra una pieza la manda a la lista de eliminados. Control de que el usuario coja una casilla que se encuntre
+     * vacia, si es asi no hace nada.
+     * @param fOrig Fila en la que se encuentre la pieza inicialmente
+     * @param cOrig Columna en la que se encuentre la pieza inicialmente
+     * @param fDest Fila a la que vamos a mandar la pieza
+     * @param cDest Columna a la que vamos a mandar la pieza
+     */
+    public void moverYatacar(int fOrig, int cOrig, int fDest, int cDest) {
+        // Buscamos quién es el que se quiere mover
+        Pieza piezaAMover = obtenerPieza(fOrig, cOrig);
+
+        if (piezaAMover == null) {
+            return;
+        }
+
+        Pieza piezaDestino = obtenerPieza(fDest, cDest);
+
+        if (piezaDestino != null) {
+            if (piezaDestino.getColor() == Color.BLANCA) {
+                this.piezasBlancas.remove(piezaDestino);
+            } else {
+                this.piezasNegras.remove(piezaDestino);
+            }
+            this.piezasEliminadas.add(piezaDestino);
+        }
+        piezaAMover.setFila(fDest);
+        piezaAMover.setColumna(cDest);
+    }
 
 
     @Override
