@@ -4,9 +4,9 @@ import java.util.Objects;
 import java.io.Serializable;
 
 public abstract class Pieza implements Serializable {
-    private int fila;
-    private int columna;
-    private final Color color;
+    protected int fila;
+    protected int columna;
+    protected final Color color;
 
     /**
     Constructor que lanza excepción si se sobrepasa de las filas y columnas límites,
