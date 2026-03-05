@@ -169,8 +169,6 @@ public abstract class Pieza implements Serializable {
 
     public abstract Pieza copiarPieza();
 
-    protected abstract char simbolo();
-
     @Override
     public String toString() {
         return "Pieza{" +
