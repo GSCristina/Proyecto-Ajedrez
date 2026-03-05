@@ -125,6 +125,31 @@ public class Tablero implements Serializable {
         }
     }
 
+    /**
+     * Metodo que crea un tablero nuevo, colocara las piezas en su sitio pero las borraremos dejando el tablero limpio sin piezas
+     * @return
+     */
+    public Tablero obtenerCopia() {
+
+        Tablero copiaTablero = new Tablero();
+        copiaTablero.vaciarPiezas();
+
+        for (Pieza p : this.piezasBlancas) {
+            copiaTablero.añadirPieza(p.copiarPieza());
+        }
+
+        for (Pieza p : this.piezasNegras) {
+            copiaTablero.añadirPieza(p.copiarPieza());
+        }
+
+        for (Pieza p : this.piezasEliminadas) {
+            copiaTablero.piezasEliminadas.add(p.copiarPieza());
+        }
+
+        return copiaTablero;
+    }
+
+
     @Override
     public String toString() {
         String tableroDibujado = "";
