@@ -148,7 +148,6 @@ public class Tablero implements Serializable {
 
         return copiaTablero;
     }
-
     /**
      * Metodo que mueve la pieza desde su posicion de origen (Fila y Columna) a una posicion destino si en el destino
      * encuentra una pieza la manda a la lista de eliminados. Control de que el usuario coja una casilla que se encuntre
@@ -179,7 +178,6 @@ public class Tablero implements Serializable {
         piezaAMover.setFila(fDest);
         piezaAMover.setColumna(cDest);
     }
-
 
 
     @Override
