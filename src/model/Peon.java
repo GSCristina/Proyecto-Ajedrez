@@ -1,5 +1,10 @@
 package model;
 
+import model.Color;
+import model.Pieza;
+import model.Tablero;
+import model.Pieza;
+
 public class Peon extends Pieza {
     public Peon(int fila, int columna, Color color) {
         super(fila, columna, color);
@@ -7,11 +12,6 @@ public class Peon extends Pieza {
 
     @Override
     public boolean puedeMover(int nuevaFila, int nuevaColumna, Tablero tablero) {
-
-        if(fila<0 || fila >7 || columna < 0 || columna >7){
-            return false;
-        }
-
         int direccion;  //Dirección en la que se puede mover el peón.
         int filaInicial;    //Fila en la que empieza el peón.
 
@@ -52,6 +52,28 @@ public class Peon extends Pieza {
     }
 
     @Override
+    public boolean puedeAtacar(Pieza piezaEnemiga, Tablero tablero) {
+
+        if (piezaEnemiga == null) return false;
+
+        if (getColor() == piezaEnemiga.getColor()) return false;
+
+        int direccion;
+
+        if (getColor() == Color.BLANCA) {
+            direccion = -1;
+        } else {
+            direccion = 1;
+        }
+
+        int filaDestino = piezaEnemiga.getFila();
+        int columnaDestino = piezaEnemiga.getColumna();
+
+        return filaDestino == getFila() + direccion &&
+                Math.abs(columnaDestino - getColumna()) == 1;
+    }
+
+    @Override
     public int obtenerPuntosPieza() {
         return 1;
     }
@@ -63,12 +85,6 @@ public class Peon extends Pieza {
 
     @Override
     protected char simbolo() {
-        return 0;
-    }
-
-
-    @Override
-    public String toString() {
-        return this.getColor() == Color.BLANCA ? "♙" : "♟";
+        return getColor() == Color.BLANCA ? '♙' : '♟';
     }
 }
