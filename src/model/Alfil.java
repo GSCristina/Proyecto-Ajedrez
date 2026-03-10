@@ -20,10 +20,6 @@ public class Alfil extends Pieza {
         return null;
     }
 
-    @Override
-    protected char simbolo() {
-        return 0;
-    }
 
     @Override
     public String toString() {

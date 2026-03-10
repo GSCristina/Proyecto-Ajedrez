@@ -6,6 +6,5 @@ public class Main {
         Tablero miTablero= new Tablero();
         System.out.println(miTablero);
 
-
     }
 }

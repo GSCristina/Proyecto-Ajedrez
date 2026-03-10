@@ -104,35 +104,13 @@ public abstract class Pieza implements Serializable {
      * @param tablero
      */
     public void mover(int nuevaFila, int nuevaColumna, Tablero tablero) {
-        if (nuevaFila < 0 || nuevaFila > 7 || nuevaColumna < 0 || nuevaColumna > 7) {
-            throw new IllegalArgumentException("No se puede mover la pieza fuera del tablero");
-        }
+
         if (!puedeMover(nuevaFila, nuevaColumna, tablero)) {
             throw new IllegalArgumentException("Esta pieza no permite este movimiento");
         }
-        Pieza piezaDestino = tablero.obtenerPieza(nuevaFila, nuevaColumna);
-        if (piezaDestino != null) {
-            if (piezaDestino instanceof Rey) {
-                throw new IllegalArgumentException("No se puede atacar al rey");
-            }
-            if (piezaDestino.getColor() == this.color) {
-                throw new IllegalArgumentException("No puedes atacar una pieza de tu mismo color");
-            }
-        }
-
-        int filaActual = this.fila;
-        int columnaActual = this.columna;
-
-
-
-        /*tablero.colocarPieza(null, filaActual, columnaActual);
-
-        this.fila=nuevaFila;
-        this.columna=nuevaColumna;
-
-        tablero.colocarPieza(this, nuevaFila, nuevaColumna);
-    }*/
-
+        this.fila = nuevaFila;
+        this.columna = nuevaColumna;
+    }
 
         /**
          * Devuelve los puntos que vale la pieza.
@@ -144,14 +122,6 @@ public abstract class Pieza implements Serializable {
          * Devuelve una copia de la pieza.
          */
         //   public abstract Pieza copiarPieza();
-
-
-        /**
-         * Devuelve el símbolo UTF-8 que representa la pieza.
-         */
-        //  protected abstract char simbolo();
-
-    }
 
     @Override
     public boolean equals(Object o) {

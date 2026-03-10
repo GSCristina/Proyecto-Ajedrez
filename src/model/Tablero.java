@@ -158,26 +158,30 @@ public class Tablero implements Serializable {
      * @param cDest Columna a la que vamos a mandar la pieza
      */
     public void moverYatacar(int fOrig, int cOrig, int fDest, int cDest) {
-        // Buscamos quién es el que se quiere mover
+
         Pieza piezaAMover = obtenerPieza(fOrig, cOrig);
 
         if (piezaAMover == null) {
             return;
         }
+        if (fDest < 0 || fDest > 7 || cDest < 0 || cDest > 7) {
+            throw new IllegalArgumentException("No se puede mover la pieza fuera del tablero");
+        }
+
 
         Pieza piezaDestino = obtenerPieza(fDest, cDest);
-
         if (piezaDestino != null) {
-            if (piezaDestino.getColor() == Color.BLANCA) {
-                this.piezasBlancas.remove(piezaDestino);
-            } else {
-                this.piezasNegras.remove(piezaDestino);
+            if (piezaDestino instanceof Rey) {
+                throw new IllegalArgumentException("No se puede atacar al rey");
             }
-            this.piezasEliminadas.add(piezaDestino);
+            if (piezaDestino.getColor() == piezaAMover.getColor()) {
+                throw new IllegalArgumentException("No puedes atacar una pieza de tu mismo color");
+            }
         }
-        piezaAMover.setFila(fDest);
-        piezaAMover.setColumna(cDest);
+        piezaAMover.mover(fDest, cDest, this);
     }
+
+
 
 
     @Override

@@ -20,11 +20,6 @@ public class Caballo extends Pieza implements PiezaSaltadora{
         return null;
     }
 
-    @Override
-    protected char simbolo() {
-        return 0;
-    }
-
 
     @Override
     public void Saltar() {
