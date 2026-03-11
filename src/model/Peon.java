@@ -52,25 +52,17 @@ public class Peon extends Pieza {
     }
 
     @Override
-    public boolean puedeAtacar(Pieza piezaEnemiga, Tablero tablero) {
+    public boolean puedeAtacar(Pieza piezaEnemiga, Tablero tablero){
 
-        if (piezaEnemiga == null) return false;
+        if(piezaEnemiga == null) return false;
+        if(getColor() == piezaEnemiga.getColor()) return false;
 
-        if (getColor() == piezaEnemiga.getColor()) return false;
+        int direccion = (getColor() == Color.BLANCA) ? -1 : 1;
 
-        int direccion;
+        int diferenciaFila = piezaEnemiga.getFila() - getFila();
+        int diferenciaColumna = piezaEnemiga.getColumna() - getColumna();
 
-        if (getColor() == Color.BLANCA) {
-            direccion = -1;
-        } else {
-            direccion = 1;
-        }
-
-        int filaDestino = piezaEnemiga.getFila();
-        int columnaDestino = piezaEnemiga.getColumna();
-
-        return filaDestino == getFila() + direccion &&
-                Math.abs(columnaDestino - getColumna()) == 1;
+        return diferenciaFila == direccion && Math.abs(diferenciaColumna) == 1;
     }
 
     @Override
