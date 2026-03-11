@@ -46,6 +46,7 @@ public class Caballo extends Pieza implements PiezaSaltadora{
         return new Caballo(this.getFila(),this.getColumna(),this.getColor());
     }
 
+
     @Override
     public void Saltar() {
 

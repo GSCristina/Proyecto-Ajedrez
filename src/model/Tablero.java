@@ -125,6 +125,65 @@ public class Tablero implements Serializable {
         }
     }
 
+    /**
+     * Metodo que crea un tablero nuevo, colocara las piezas en su sitio pero las borraremos dejando el tablero limpio sin piezas
+     * @return
+     */
+    public Tablero obtenerCopia() {
+
+        Tablero copiaTablero = new Tablero();
+        copiaTablero.vaciarPiezas();
+
+        for (Pieza p : this.piezasBlancas) {
+            copiaTablero.añadirPieza(p.copiarPieza());
+        }
+
+        for (Pieza p : this.piezasNegras) {
+            copiaTablero.añadirPieza(p.copiarPieza());
+        }
+
+        for (Pieza p : this.piezasEliminadas) {
+            copiaTablero.piezasEliminadas.add(p.copiarPieza());
+        }
+
+        return copiaTablero;
+    }
+    /**
+     * Metodo que mueve la pieza desde su posicion de origen (Fila y Columna) a una posicion destino si en el destino
+     * encuentra una pieza la manda a la lista de eliminados. Control de que el usuario coja una casilla que se encuntre
+     * vacia, si es asi no hace nada.
+     * @param fOrig Fila en la que se encuentre la pieza inicialmente
+     * @param cOrig Columna en la que se encuentre la pieza inicialmente
+     * @param fDest Fila a la que vamos a mandar la pieza
+     * @param cDest Columna a la que vamos a mandar la pieza
+     */
+    public void moverYatacar(int fOrig, int cOrig, int fDest, int cDest) {
+
+        Pieza piezaAMover = obtenerPieza(fOrig, cOrig);
+
+        if (piezaAMover == null) {
+            return;
+        }
+        if (fDest < 0 || fDest > 7 || cDest < 0 || cDest > 7) {
+            throw new IllegalArgumentException("No se puede mover la pieza fuera del tablero");
+        }
+
+
+        Pieza piezaDestino = obtenerPieza(fDest, cDest);
+        if (piezaDestino != null) {
+            if (piezaDestino instanceof Rey) {
+                throw new IllegalArgumentException("No se puede atacar al rey");
+            }
+            if (piezaDestino.getColor() == piezaAMover.getColor()) {
+                throw new IllegalArgumentException("No puedes atacar una pieza de tu mismo color");
+            }
+        }
+        piezaAMover.mover(fDest, cDest, this);
+    }
+
+
+
+
     @Override
     public String toString() {
         String tableroDibujado = "";
@@ -149,7 +208,7 @@ public class Tablero implements Serializable {
             }
             tableroDibujado += "\n";
         }
-        tableroDibujado += "  a b c d e f g h\n";
+        tableroDibujado += "  1  2  3 4  5  6  7 8\n";
         return tableroDibujado;
     }
 }
