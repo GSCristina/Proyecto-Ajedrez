@@ -7,7 +7,33 @@ public class Caballo extends Pieza implements PiezaSaltadora{
 
     @Override
     public boolean puedeMover(int nuevaFila, int nuevaColumna, Tablero tablero) {
-        return false;
+        boolean movimientoValido=false;
+        if (getFila() + 2== nuevaFila && getColumna() + 1== nuevaColumna) {
+            movimientoValido=true;
+        }
+        else if (getFila() + 2 == nuevaFila && getColumna() - 1 == nuevaColumna) {
+            movimientoValido=true;
+        }
+        else if (getFila() - 2 == nuevaFila && getColumna() + 1 == nuevaColumna) {
+            movimientoValido=true;
+        }
+        else if (getFila() - 2 == nuevaFila && getColumna() - 1 == nuevaColumna) {
+            movimientoValido=true;
+        }
+        else if (getFila() + 1 == nuevaFila && getColumna() + 2 == nuevaColumna) {
+            movimientoValido=true;
+        }
+        else if (getFila() + 1 == nuevaFila && getColumna() - 2 == nuevaColumna) {
+            movimientoValido=true;
+        }
+        else if (getFila() - 1 == nuevaFila && getColumna() + 2 == nuevaColumna) {
+            movimientoValido=true;
+        }
+        else if (getFila() - 1 == nuevaFila && getColumna() - 2 == nuevaColumna) {
+            movimientoValido=true;
+        }
+
+        return movimientoValido;
     }
 
     @Override
@@ -17,7 +43,7 @@ public class Caballo extends Pieza implements PiezaSaltadora{
 
     @Override
     public Pieza copiarPieza() {
-        return null;
+        return new Caballo(this.getFila(),this.getColumna(),this.getColor());
     }
 
 
@@ -28,6 +54,6 @@ public class Caballo extends Pieza implements PiezaSaltadora{
 
     @Override
     public String toString() {
-        return this.getColor() == Color.BLANCA ? "♘" : "♞";
+            return this.getColor() == Color.BLANCA ? "♘" : "♞";
+        }
     }
-}
