@@ -13,8 +13,7 @@ public abstract class Pieza implements Serializable {
     Constructor que lanza excepción si se sobrepasa de las filas y columnas límites,
      además de comprobar que tenga asignado un color, lanzando excepción en caso negativo.
      */
-    public Pieza(int fila, int columna, Color color, int puntos) {
-
+    public Pieza(int fila, int columna, Color color) {
 
         if (comprobarCasillaValida(fila, columna)) {
             throw new IllegalArgumentException("La posición debe estar entre 0 y 7");
@@ -38,7 +37,16 @@ public abstract class Pieza implements Serializable {
         return fila;
     }
 
+    /**
+     * Setter que comprueba que la fila este comprendida entre 0 y 7, en el caso de que no,
+     * lanza una excepción.
+     *
+     * @param fila
+     */
     public void setFila(int fila) {
+        if (fila < 0 || fila > 7) {
+            throw new IllegalArgumentException("La fila debe estar entre 0 y 7");
+        }
         this.fila = fila;
     }
 
@@ -46,7 +54,17 @@ public abstract class Pieza implements Serializable {
         return columna;
     }
 
+
+    /**
+     * Setter que comprueba que la colimna este comprendida entre 0 y 7, en el caso
+     * de que no, lanza una exepción.
+     *
+     * @param columna
+     */
     public void setColumna(int columna) {
+        if (columna < 0 || columna > 7) {
+            throw new IllegalArgumentException("La columna debe estar entre 0 y 7");
+        }
         this.columna = columna;
     }
 
@@ -66,7 +84,7 @@ public abstract class Pieza implements Serializable {
      * @param tablero
      * @param nuevaColumna
      */
-    public abstract boolean puedeMover(int nuevaFila, int nuevaColumna,Tablero tablero);
+    public abstract boolean puedeMover(int nuevaFila, int nuevaColumna, Tablero tablero);
 
 
     /**
@@ -75,9 +93,9 @@ public abstract class Pieza implements Serializable {
      * @param piezaEnemiga
      * @param tablero
      */
-    public boolean puedeAtacar(Pieza piezaEnemiga, Tablero tablero){
-        if (piezaEnemiga==null) return false;
-        if (this.color==piezaEnemiga.color) return false;
+    public boolean puedeAtacar(Pieza piezaEnemiga, Tablero tablero) {
+        if (piezaEnemiga == null) return false;
+        if (this.color == piezaEnemiga.color) return false;
         return puedeMover(piezaEnemiga.getFila(), piezaEnemiga.getColumna(), tablero);
     }
 
@@ -90,27 +108,25 @@ public abstract class Pieza implements Serializable {
      * @param tablero
      */
     public void mover(int nuevaFila, int nuevaColumna, Tablero tablero) {
+
+        if (!puedeMover(nuevaFila, nuevaColumna, tablero)) {
+            throw new IllegalArgumentException("Esta pieza no permite este movimiento");
+        }
+        this.fila = nuevaFila;
+        this.columna = nuevaColumna;
     }
 
 
-    /**
-     * Devuelve los puntos que vale la pieza.
-     */
-    public abstract int obtenerPuntosPieza();
+        /**
+         * Devuelve los puntos que vale la pieza.
+         */
+//    public abstract int obtenerPuntosPieza();
 
 
-
-    /**
-     * Devuelve una copia de la pieza.
-     */
-    public abstract Pieza copiarPieza();
-
-
-
-    /**
-     * Devuelve el símbolo UTF-8 que representa la pieza.
-     */
-    protected abstract char simbolo();
+        /**
+         * Devuelve una copia de la pieza.
+         */
+        //   public abstract Pieza copiarPieza();
 
     @Override
     public boolean equals(Object o) {
@@ -124,8 +140,17 @@ public abstract class Pieza implements Serializable {
         return Objects.hash(fila, columna, color);
     }
 
-    public String toString(){
-        return String.valueOf(simbolo());
+    public abstract int obtenerPuntosPieza();
+
+    public abstract Pieza copiarPieza();
+
+    @Override
+    public String toString() {
+        return "Pieza{" +
+                "fila=" + fila +
+                ", columna=" + columna +
+                ", color=" + color +
+                '}';
     }
 
 
