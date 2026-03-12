@@ -4,15 +4,16 @@ import java.util.Objects;
 import java.io.Serializable;
 
 public abstract class Pieza implements Serializable {
-    protected int fila;
-    protected int columna;
-    protected final Color color;
+    private int fila;
+    private int columna;
+    private Color color;
+    protected final int puntos;
 
     /**
-     * Constructor que lanza excepción si se sobrepasa de las filas y columnas límites,
-     * además de comprobar que tenga asignado un color, lanzando excepción en caso negativo.
+    Constructor que lanza excepción si se sobrepasa de las filas y columnas límites,
+     además de comprobar que tenga asignado un color, lanzando excepción en caso negativo.
      */
-    public Pieza(int fila, int columna, Color color) {
+    public Pieza(int fila, int columna, Color color,int puntos) {
 
         if (comprobarCasillaValida(fila, columna)) {
             throw new IllegalArgumentException("La posición debe estar entre 0 y 7");
@@ -25,6 +26,7 @@ public abstract class Pieza implements Serializable {
         this.fila = fila;
         this.columna = columna;
         this.color = color;
+        this.puntos = puntos;
     }
 
     private static boolean comprobarCasillaValida(int fila, int columna) {
@@ -70,10 +72,14 @@ public abstract class Pieza implements Serializable {
         return color;
     }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+
 
     /**
      * Comprueba si la pieza puede moverse a una nueva posición del tablero.
-     *
      * @param nuevaFila
      * @param tablero
      * @param nuevaColumna
@@ -84,7 +90,6 @@ public abstract class Pieza implements Serializable {
     /**
      * Comprueba si la pieza puede atacar a otra.
      * No permite atacar a piezas del mismo color.
-     *
      * @param piezaEnemiga
      * @param tablero
      */
@@ -98,7 +103,6 @@ public abstract class Pieza implements Serializable {
     /**
      * Mueve la pieza a una nueva posición.
      * Lanza IllegalArgumentException si el movimiento no está permitido.
-     *
      * @param nuevaColumna
      * @param nuevaFila
      * @param tablero
@@ -111,6 +115,7 @@ public abstract class Pieza implements Serializable {
         this.fila = nuevaFila;
         this.columna = nuevaColumna;
     }
+
 
         /**
          * Devuelve los puntos que vale la pieza.
@@ -147,4 +152,7 @@ public abstract class Pieza implements Serializable {
                 ", color=" + color +
                 '}';
     }
+
+
+    protected abstract char simbolo();
 }

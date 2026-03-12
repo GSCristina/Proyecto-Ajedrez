@@ -23,31 +23,31 @@ public class Tablero implements Serializable {
      */
     private void inicializarTablero() {
 
-        piezasNegras.add(new Torre(0, 0, Color.NEGRA));
-        piezasNegras.add(new Caballo(0, 1, Color.NEGRA));
-        piezasNegras.add(new Alfil(0, 2, Color.NEGRA));
-        piezasNegras.add(new Reina(0, 3, Color.NEGRA));
-        piezasNegras.add(new Rey(0, 4, Color.NEGRA));
-        piezasNegras.add(new Alfil(0, 5, Color.NEGRA));
-        piezasNegras.add(new Caballo(0, 6, Color.NEGRA));
-        piezasNegras.add(new Torre(0, 7, Color.NEGRA));
+        piezasNegras.add(new Torre(0, 0, Color.NEGRA,5));
+        piezasNegras.add(new Caballo(0, 1, Color.NEGRA,3));
+        piezasNegras.add(new Alfil(0, 2, Color.NEGRA,3));
+        piezasNegras.add(new Reina(0, 3, Color.NEGRA,9));
+        piezasNegras.add(new Rey(0, 4, Color.NEGRA,100));
+        piezasNegras.add(new Alfil(0, 5, Color.NEGRA,9));
+        piezasNegras.add(new Caballo(0, 6, Color.NEGRA,3));
+        piezasNegras.add(new Torre(0, 7, Color.NEGRA,5));
 
         for (int i = 0; i < 8; i++) {
-            piezasNegras.add(new Peon(1, i, Color.NEGRA));
+            piezasNegras.add(new Peon(1, i, Color.NEGRA,1));
         }
 
         for (int i = 0; i < 8; i++) {
-            piezasBlancas.add(new Peon(6, i, Color.BLANCA));
+            piezasBlancas.add(new Peon(6, i, Color.BLANCA,1));
         }
 
-        piezasBlancas.add(new Torre(7, 0, Color.BLANCA));
-        piezasBlancas.add(new Caballo(7, 1, Color.BLANCA));
-        piezasBlancas.add(new Alfil(7, 2, Color.BLANCA));
-        piezasBlancas.add(new Reina(7, 3, Color.BLANCA));
-        piezasBlancas.add(new Rey(7, 4, Color.BLANCA));
-        piezasBlancas.add(new Alfil(7, 5, Color.BLANCA));
-        piezasBlancas.add(new Caballo(7, 6, Color.BLANCA));
-        piezasBlancas.add(new Torre(7, 7, Color.BLANCA));
+        piezasBlancas.add(new Torre(7, 0, Color.BLANCA,5));
+        piezasBlancas.add(new Caballo(7, 1, Color.BLANCA,3));
+        piezasBlancas.add(new Alfil(7, 2, Color.BLANCA,9));
+        piezasBlancas.add(new Reina(7, 3, Color.BLANCA,9));
+        piezasBlancas.add(new Rey(7, 4, Color.BLANCA,100));
+        piezasBlancas.add(new Alfil(7, 5, Color.BLANCA,9));
+        piezasBlancas.add(new Caballo(7, 6, Color.BLANCA,3));
+        piezasBlancas.add(new Torre(7, 7, Color.BLANCA,5));
     }
 
     /**

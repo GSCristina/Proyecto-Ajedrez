@@ -1,8 +1,8 @@
 package model;
 
 public class Reina extends Pieza {
-    public Reina(int fila, int columna, Color color) {
-        super(fila, columna, color);
+    public Reina(int fila, int columna, Color color, int puntos) {
+        super(fila, columna, color, puntos);
     }
 
     @Override
@@ -12,7 +12,7 @@ public class Reina extends Pieza {
 
     @Override
     public int obtenerPuntosPieza() {
-        return 9;
+        return this.puntos;
     }
 
     @Override
@@ -20,9 +20,7 @@ public class Reina extends Pieza {
         return null;
     }
 
-
     @Override
-    public String toString() {
-        return this.getColor() == Color.BLANCA ? "♕" : "♛";
-    }
+    protected char simbolo() {return this.getColor() == Color.BLANCA ? '♕' : '♛';}
+
 }
