@@ -18,8 +18,8 @@ public class Tablero implements Serializable {
     }
 
     /**
-     * Metodo con el que iniciamos una partida de ajedrez colocamos las fichas en la posicion que
-     * le corresponde a cada una y segun el color de estas
+     * Metodo con el que iniciamos una partida de ajedrez colocamos las fichas en la posición que
+     * le corresponde a cada una y según el color de estas
      */
     private void inicializarTablero() {
 
@@ -51,10 +51,11 @@ public class Tablero implements Serializable {
     }
 
     /**
-     * Metodo que segun la fila y la columna nos dira que ficha la ocupa
-     * @param fila
-     * @param columna
-     * @return
+     * Metodo que busca y devuelve la pieza que se encuentra en una coordenada específica del tablero.
+     * Recorre las listas de piezas activas (blancas y negras) buscando coincidencias.
+     * * @param fila La fila del tablero que se quiere consultar (de 0 a 7).
+     * @param columna La columna del tablero que se quiere consultar (de 0 a 7).
+     * @return El objeto Pieza que ocupa esa casilla, o null si la casilla está vacía.
      */
     public Pieza obtenerPieza(int fila, int columna) {
 
@@ -126,8 +127,10 @@ public class Tablero implements Serializable {
     }
 
     /**
-     * Metodo que crea un tablero nuevo, colocara las piezas en su sitio pero las borraremos dejando el tablero limpio sin piezas
-     * @return
+     * Metodo que crea una copia exacta (clon) del estado actual del tablero.
+     * Internamente crea un tablero nuevo, lo vacía y clona una a una todas las
+     * piezas vivas y eliminadas manteniendo sus posiciones exactas.
+     * * @return Un nuevo objeto Tablero que es una copia independiente del original.
      */
     public Tablero obtenerCopia() {
 
@@ -181,7 +184,43 @@ public class Tablero implements Serializable {
         piezaAMover.mover(fDest, cDest, this);
     }
 
+    /**
+     * Metodo que comprueba si existen piezas bloqueando el camino (horizontal, vertical o diagonal)
+     * entre una casilla de origen y una de destino. No evalúa saltos como el del Caballo.
+     * @param fOrig La fila de la casilla donde se encuentra la pieza actualmente (0-7).
+     * @param cOrig La columna de la casilla donde se encuentra la pieza actualmente (0-7).
+     * @param fDest La fila de la casilla a la que se quiere mover (0-7).
+     * @param cDest La columna de la casilla a la que se quiere mover (0-7).
+     * @return true si hay al menos una pieza estorbando en el trayecto; false si el camino está libre.
+     */
+    public boolean hayPiezasEntre(int fOrig, int cOrig, int fDest, int cDest){
+        int difFila = fDest - fOrig;
+        int difColumna = cDest - cOrig;
 
+        int pasoFila = 0;
+        if (difFila > 0) pasoFila = 1;
+        else if (difFila < 0) pasoFila = -1;
+
+        int pasoColumna = 0;
+        if (difColumna > 0) pasoColumna = 1;
+        else if (difColumna < 0) pasoColumna = -1;
+
+        if (Math.abs(difFila) != Math.abs(difColumna) && difFila != 0 && difColumna != 0) {
+            return false;
+        }
+
+        int fActual = fOrig + pasoFila;
+        int cActual = cOrig + pasoColumna;
+
+        while (fActual != fDest || cActual != cDest) {
+            if (obtenerPieza(fActual, cActual) != null) {
+                return true;
+            }
+            fActual += pasoFila;
+            cActual += pasoColumna;
+        }
+        return false;
+    }
 
 
     @Override
@@ -208,7 +247,7 @@ public class Tablero implements Serializable {
             }
             tableroDibujado += "\n";
         }
-        tableroDibujado += "  1  2  3 4  5  6  7 8\n";
+        tableroDibujado += "  a  b  c  d f  g  h\n";
         return tableroDibujado;
     }
 }

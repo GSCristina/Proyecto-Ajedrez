@@ -24,7 +24,7 @@ public class Utils {
 
     //Metodo validarFormatoJugada2 que recibe por parametro una jugada, si está vacío o no tiene la longitud exacta (5 letras: a2 a4) devuelve false.
 
-    public boolean validarFormatoJugada2(String jugada) {
+    public static boolean validarFormatoJugada2(String jugada) {
         if (jugada == null || jugada.length() != 5) {
             return false;
         }
