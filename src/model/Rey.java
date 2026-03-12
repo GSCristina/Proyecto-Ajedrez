@@ -21,12 +21,6 @@ public class Rey extends Pieza {
     }
 
     @Override
-    protected char simbolo() {
-        return 0;
-    }
-
-
-    @Override
     public String toString() {
         return this.getColor() == Color.BLANCA ? "♔" : "♚";
     }

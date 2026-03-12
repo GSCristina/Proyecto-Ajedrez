@@ -17,6 +17,10 @@ public class Tablero implements Serializable {
         inicializarTablero();
     }
 
+    /**
+     * Metodo con el que iniciamos una partida de ajedrez colocamos las fichas en la posicion que
+     * le corresponde a cada una y segun el color de estas
+     */
     private void inicializarTablero() {
 
         piezasNegras.add(new Torre(0, 0, Color.NEGRA));
@@ -45,6 +49,13 @@ public class Tablero implements Serializable {
         piezasBlancas.add(new Caballo(7, 6, Color.BLANCA));
         piezasBlancas.add(new Torre(7, 7, Color.BLANCA));
     }
+
+    /**
+     * Metodo que segun la fila y la columna nos dira que ficha la ocupa
+     * @param fila
+     * @param columna
+     * @return
+     */
     public Pieza obtenerPieza(int fila, int columna) {
 
         for (Pieza p : piezasBlancas) {
@@ -60,6 +71,118 @@ public class Tablero implements Serializable {
         }
         return null;
     }
+
+    /**
+     * Metodo para borrar todo el contenido de las lista de golpe.
+     */
+    public void vaciarPiezas() {
+        this.piezasBlancas.clear();
+        this.piezasNegras.clear();
+        this.piezasEliminadas.clear();
+    }
+
+    /**
+     * Metodo que reinicia el tablero usando el metodo "vaciarPiezas" e inicia una nueva partida
+     */
+    public void reiniciarTablero() {
+        vaciarPiezas();
+        inicializarTablero();
+    }
+
+    /**
+     * Metodo con el cual obtenemos la puntuacion total de piezas vivas de un color
+     * @param color pasamos el color por parametro para que nos diga solo las de ese color Blancas o Negras
+     * @return devuelve la puntuacion total de piezas del mismo color (solo vivas)
+     */
+    public int obtenerPuntuacion(Color color) {
+        int puntosTotales = 0;
+
+        if (color == Color.BLANCA) {
+            for (Pieza p : piezasBlancas) {
+                puntosTotales += p.obtenerPuntosPieza();
+            }
+        }
+
+        else if (color == Color.NEGRA) {
+            for (Pieza p : piezasNegras) {
+                puntosTotales += p.obtenerPuntosPieza();
+            }
+        }
+
+        return puntosTotales;
+    }
+
+    /**Metodo que recibe una pieza y mirando su color la metera en la lista de piezasBlancas o piezasNegras.
+     * @param pieza le pasaremos la pieza que queremos añadir y segun su color la metera en una lista u otra
+     */
+    public void añadirPieza(Pieza pieza) {
+        if (pieza == null) return;
+
+        if (pieza.getColor() == Color.BLANCA) {
+            this.piezasBlancas.add(pieza);
+        } else if (pieza.getColor() == Color.NEGRA) {
+            this.piezasNegras.add(pieza);
+        }
+    }
+
+    /**
+     * Metodo que crea un tablero nuevo, colocara las piezas en su sitio pero las borraremos dejando el tablero limpio sin piezas
+     * @return
+     */
+    public Tablero obtenerCopia() {
+
+        Tablero copiaTablero = new Tablero();
+        copiaTablero.vaciarPiezas();
+
+        for (Pieza p : this.piezasBlancas) {
+            copiaTablero.añadirPieza(p.copiarPieza());
+        }
+
+        for (Pieza p : this.piezasNegras) {
+            copiaTablero.añadirPieza(p.copiarPieza());
+        }
+
+        for (Pieza p : this.piezasEliminadas) {
+            copiaTablero.piezasEliminadas.add(p.copiarPieza());
+        }
+
+        return copiaTablero;
+    }
+    /**
+     * Metodo que mueve la pieza desde su posicion de origen (Fila y Columna) a una posicion destino si en el destino
+     * encuentra una pieza la manda a la lista de eliminados. Control de que el usuario coja una casilla que se encuntre
+     * vacia, si es asi no hace nada.
+     * @param fOrig Fila en la que se encuentre la pieza inicialmente
+     * @param cOrig Columna en la que se encuentre la pieza inicialmente
+     * @param fDest Fila a la que vamos a mandar la pieza
+     * @param cDest Columna a la que vamos a mandar la pieza
+     */
+    public void moverYatacar(int fOrig, int cOrig, int fDest, int cDest) {
+
+        Pieza piezaAMover = obtenerPieza(fOrig, cOrig);
+
+        if (piezaAMover == null) {
+            return;
+        }
+        if (fDest < 0 || fDest > 7 || cDest < 0 || cDest > 7) {
+            throw new IllegalArgumentException("No se puede mover la pieza fuera del tablero");
+        }
+
+
+        Pieza piezaDestino = obtenerPieza(fDest, cDest);
+        if (piezaDestino != null) {
+            if (piezaDestino instanceof Rey) {
+                throw new IllegalArgumentException("No se puede atacar al rey");
+            }
+            if (piezaDestino.getColor() == piezaAMover.getColor()) {
+                throw new IllegalArgumentException("No puedes atacar una pieza de tu mismo color");
+            }
+        }
+        piezaAMover.mover(fDest, cDest, this);
+    }
+
+
+
 
     @Override
     public String toString() {
@@ -85,7 +208,7 @@ public class Tablero implements Serializable {
             }
             tableroDibujado += "\n";
         }
-        tableroDibujado += "  a b c d e f g h\n";
+        tableroDibujado += "  1  2  3 4  5  6  7 8\n";
         return tableroDibujado;
     }
 }

@@ -20,10 +20,6 @@ public class Torre extends Pieza {
         return null;
     }
 
-    @Override
-    protected char simbolo() {
-        return 0;
-    }
 
 
     @Override
