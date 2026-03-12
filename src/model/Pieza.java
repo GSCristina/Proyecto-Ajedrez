@@ -13,7 +13,7 @@ public abstract class Pieza implements Serializable {
     Constructor que lanza excepción si se sobrepasa de las filas y columnas límites,
      además de comprobar que tenga asignado un color, lanzando excepción en caso negativo.
      */
-    public Pieza(int fila, int columna, Color color) {
+    public Pieza(int fila, int columna, Color color,int puntos) {
 
         if (comprobarCasillaValida(fila, columna)) {
             throw new IllegalArgumentException("La posición debe estar entre 0 y 7");
@@ -154,4 +154,5 @@ public abstract class Pieza implements Serializable {
     }
 
 
+    protected abstract char simbolo();
 }
