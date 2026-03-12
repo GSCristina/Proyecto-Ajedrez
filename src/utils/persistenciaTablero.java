@@ -46,33 +46,28 @@ public class persistenciaTablero {
         String[][] tablero = new String[8][8];
         File archivo = new File(ruta);
 
-        // 1. Verificación inicial de existencia
         if (!archivo.exists()) {
             throw new FileNotFoundException("No se encontró el archivo en: " + ruta);
         }
 
-        // 2. Try-with-resources: Asegura que el archivo se cierre solo, incluso si hay error
         try (Scanner lector = new Scanner(archivo)) {
 
             for (int i = 0; i < 8; i++) {
                 for (int j = 0; j < 8; j++) {
-                    // 3. Verificamos si hay datos antes de leer para evitar errores
                     if (lector.hasNext()) {
                         tablero[i][j] = lector.next();
-                    } else {
-                        // Si el archivo termina antes de las 64 piezas, marcamos como vacío
-                        tablero[i][j] = "nulo";
-                    }
+                    } else
+                        tablero[i][j] = null;
                 }
             }
+        } catch (Exception e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+
 
             System.out.println("Tablero cargado con éxito desde " + ruta);
-            return tablero;
+            String[][] tablero1 = tablero;
+            return tablero1;
 
-        } catch (Exception e) {
-            // Captura errores de lectura inesperados
-            System.err.println("Error al leer el archivo: " + e.getMessage());
-            return null;
-        }
+        }return null;
     }
 }
