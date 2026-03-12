@@ -6,8 +6,8 @@ import model.Tablero;
 import model.Pieza;
 
 public class Peon extends Pieza {
-    public Peon(int fila, int columna, Color color) {
-        super(fila, columna, color);
+    public Peon(int fila, int columna, Color color, int puntos) {
+        super(fila, columna, color, puntos);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class Peon extends Pieza {
 
     @Override
     public int obtenerPuntosPieza() {
-        return 1;
+        return this.puntos;
     }
 
     @Override

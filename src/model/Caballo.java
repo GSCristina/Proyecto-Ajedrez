@@ -1,8 +1,8 @@
 package model;
 
 public class Caballo extends Pieza implements PiezaSaltadora{
-    public Caballo(int fila, int columna, Color color) {
-        super(fila, columna, color);
+    public Caballo(int fila, int columna, Color color, int puntos) {
+        super(fila, columna, color, puntos);
     }
 
     @Override
@@ -12,7 +12,7 @@ public class Caballo extends Pieza implements PiezaSaltadora{
 
     @Override
     public int obtenerPuntosPieza() {
-        return 3;
+        return this.puntos;
     }
 
     @Override
@@ -21,18 +21,10 @@ public class Caballo extends Pieza implements PiezaSaltadora{
     }
 
     @Override
-    protected char simbolo() {
-        return 0;
-    }
+    protected char simbolo() {return this.getColor() == Color.BLANCA ? '♘' : '♞';}
 
 
     @Override
     public void Saltar() {
-
-    }
-
-    @Override
-    public String toString() {
-        return this.getColor() == Color.BLANCA ? "♘" : "♞";
     }
 }

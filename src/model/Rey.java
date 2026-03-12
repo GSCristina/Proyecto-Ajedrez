@@ -1,8 +1,8 @@
 package model;
 
 public class Rey extends Pieza {
-    public Rey(int fila, int columna, Color color) {
-        super(fila, columna, color);
+    public Rey(int fila, int columna, Color color, int puntos) {
+        super(fila, columna, color, puntos);
     }
 
     @Override
@@ -12,7 +12,7 @@ public class Rey extends Pieza {
 
     @Override
     public int obtenerPuntosPieza() {
-        return 100;
+        return this.puntos;
     }
 
     @Override
@@ -21,13 +21,5 @@ public class Rey extends Pieza {
     }
 
     @Override
-    protected char simbolo() {
-        return 0;
-    }
-
-
-    @Override
-    public String toString() {
-        return this.getColor() == Color.BLANCA ? "♔" : "♚";
-    }
+    protected char simbolo() {return this.getColor() == Color.BLANCA ? '♔' : '♚';}
 }
