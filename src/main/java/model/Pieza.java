@@ -72,6 +72,10 @@ public abstract class Pieza implements Serializable {
         return color;
     }
 
+    public int getPuntos() {
+        return puntos;
+    }
+
     /**
      * Comprueba si la pieza puede moverse a una nueva posición del tablero.
      * @param nuevaFila

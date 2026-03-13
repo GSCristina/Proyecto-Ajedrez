@@ -56,7 +56,7 @@ public class Caballo extends Pieza implements PiezaSaltadora{
 
     @Override
     public Pieza copiarPieza() {
-        return new Caballo(this.getFila(),this.getColumna(),this.getColor());
+        return new Caballo(this.getFila(),this.getColumna(),this.getColor(),this.getPuntos());
     }
 
 }
