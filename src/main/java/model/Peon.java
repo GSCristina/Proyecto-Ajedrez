@@ -75,9 +75,8 @@ public class Peon extends Pieza {
         return null;
     }
 
-
     @Override
-    public String toString() {
-        return this.getColor() == Color.BLANCA ? "♙" : "♟";
+    protected char simbolo() {
+        return this.getColor() == Color.BLANCA ? '♙' : '♟';
     }
 }
