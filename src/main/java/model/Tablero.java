@@ -180,6 +180,12 @@ public class Tablero implements Serializable {
             if (piezaDestino.getColor() == piezaAMover.getColor()) {
                 throw new IllegalArgumentException("No puedes atacar una pieza de tu mismo color");
             }
+            if (piezaDestino.getColor() == Color.BLANCA) {
+                piezasBlancas.remove(piezaDestino);
+            } else {
+                piezasNegras.remove(piezaDestino);
+            }
+            piezasEliminadas.add(piezaDestino);
         }
         piezaAMover.mover(fDest, cDest, this);
     }
@@ -276,7 +282,7 @@ public class Tablero implements Serializable {
             }
             tableroDibujado += "\n";
         }
-        tableroDibujado += "  a  b  c  d f  g  h\n";
+        tableroDibujado += "  a  b  c  d  e f  g  h\n";
         return tableroDibujado;
     }
 }
