@@ -2,7 +2,7 @@ package model;
 
 public class Torre extends Pieza {
     public Torre(int fila, int columna, Color color, int puntos) {
-        super(fila, columna, color, puntos);
+        super(fila, columna, color);
     }
 
 

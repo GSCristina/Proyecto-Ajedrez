@@ -1,13 +1,10 @@
 package model;
 
-import model.Color;
-import model.Pieza;
-import model.Tablero;
-import model.Pieza;
-
 public class Peon extends Pieza {
+    public static final int PUNTOS=1;
+
     public Peon(int fila, int columna, Color color, int puntos) {
-        super(fila, columna, color, puntos);
+        super(fila, columna, color);
     }
 
     @Override
@@ -67,16 +64,16 @@ public class Peon extends Pieza {
 
     @Override
     public int obtenerPuntosPieza() {
-        return this.puntos;
+        return this.PUNTOS;
     }
 
     @Override
     public Pieza copiarPieza() {
         return null;
     }
-
     @Override
     protected char simbolo() {
-        return this.getColor() == Color.BLANCA ? '♙' : '♟';
+        return getColor() == Color.BLANCA ? '♗' : '♝';
     }
 }
+

@@ -1,8 +1,10 @@
 package model;
 
 public class Reina extends Pieza {
+    public static final int PUNTOS=9;
+
     public Reina(int fila, int columna, Color color, int puntos) {
-        super(fila, columna, color, puntos);
+        super(fila, columna, color);
     }
 
     @Override
@@ -12,7 +14,7 @@ public class Reina extends Pieza {
 
     @Override
     public int obtenerPuntosPieza() {
-        return this.puntos;
+        return PUNTOS;
     }
 
     @Override
