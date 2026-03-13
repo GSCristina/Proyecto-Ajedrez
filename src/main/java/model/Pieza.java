@@ -15,7 +15,7 @@ public abstract class Pieza implements Serializable {
      */
     public Pieza(int fila, int columna, Color color,int puntos) {
 
-        if (comprobarCasillaValida(fila, columna)) {
+        if (comprobarCasillaInvalida(fila, columna)) {
             throw new IllegalArgumentException("La posición debe estar entre 0 y 7");
         }
 
@@ -29,7 +29,7 @@ public abstract class Pieza implements Serializable {
         this.puntos = puntos;
     }
 
-    private static boolean comprobarCasillaValida(int fila, int columna) {
+    private static boolean comprobarCasillaInvalida(int fila, int columna) {
         return fila < 0 || fila > 7 || columna < 0 || columna > 7;
     }
 
@@ -72,12 +72,6 @@ public abstract class Pieza implements Serializable {
         return color;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-
-
     /**
      * Comprueba si la pieza puede moverse a una nueva posición del tablero.
      * @param nuevaFila
@@ -116,18 +110,6 @@ public abstract class Pieza implements Serializable {
         this.columna = nuevaColumna;
     }
 
-
-        /**
-         * Devuelve los puntos que vale la pieza.
-         */
-//    public abstract int obtenerPuntosPieza();
-
-
-        /**
-         * Devuelve una copia de la pieza.
-         */
-        //   public abstract Pieza copiarPieza();
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -146,13 +128,7 @@ public abstract class Pieza implements Serializable {
 
     @Override
     public String toString() {
-        return "Pieza{" +
-                "fila=" + fila +
-                ", columna=" + columna +
-                ", color=" + color +
-                '}';
+        return String.valueOf(simbolo());
     }
-
-
     protected abstract char simbolo();
 }
