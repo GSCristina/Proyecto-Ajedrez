@@ -18,7 +18,7 @@ public class Alfil extends Pieza {
 
     @Override
     public Pieza copiarPieza() {
-        return null;
+        return new Torre(this.getFila(), this.getColumna(), this.getColor(), this.puntos);
     }
 
     @Override
