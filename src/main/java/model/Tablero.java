@@ -221,6 +221,35 @@ public class Tablero implements Serializable {
         }
         return false;
     }
+    /**
+     * Método que comprueba si el Rey de un color específico está siendo amenazado (en jaque).
+     * Busca al Rey de ese color en el tablero y luego verifica si alguna de las
+     * piezas enemigas vivas tiene la capacidad de atacarle en su casilla actual.
+     * * @param color El color del equipo que queremos comprobar (BLANCA o NEGRA).
+     * @return true si el Rey está en jaque, false si está a salvo.
+     */
+    public boolean estaEnJaque(Color color) {
+        Pieza miRey = null;
+
+        List<Pieza> misPiezas = (color == Color.BLANCA) ? piezasBlancas : piezasNegras;
+        List<Pieza> piezasEnemigas = (color == Color.BLANCA) ? piezasNegras : piezasBlancas;
+
+        for (Pieza p : misPiezas) {
+            if (p instanceof Rey) {
+                miRey = p;
+                break;
+            }
+        }
+        if (miRey == null) {
+            return false;
+        }
+        for (Pieza enemiga : piezasEnemigas) {
+            if (enemiga.puedeAtacar(miRey, this)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     @Override
