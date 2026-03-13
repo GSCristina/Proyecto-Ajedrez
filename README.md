@@ -1,12 +1,15 @@
 # Proyecto-Ajedrez
-Tablero de ajedrez
+#Tablero de ajedrez
 
-JAVAque Mate
-Descripción
+#JAVAque Mate
+#Descripción
 Este documento describe el proyecto a realizar durante la segunda evaluación del módulo de Programación de 1º CFGS DAM. Es un proyecto que se realiza por equipos colaborativos (4-5 personas), empleando el sistema de control de versiones Git y utilizando una metodología ágil. Los sprints se realizarán por semanas y se requerirá el empleo de Trello y Github Issues.
+
 La entrega la realizará el Scrum Master siguiendo escrupulosamente las instrucciones del apartado Entrega.
+
 Toda entrega que no se ciña a las fechas o formato será descalificada significando el suspenso automático de todos los miembros del equipo. No se realizarán excepciones de entregas con retraso sea el motivo que sea.
-El proyecto consiste en desarrollar un motor simplificado de ajedrez en Java, aplicando:
+---
+#El proyecto consiste en desarrollar un motor simplificado de ajedrez en Java, aplicando:
 Herencia
 Clases abstractas
 Interfaces
@@ -14,23 +17,29 @@ Enum
 Serialización
 Colecciones
 Persistencia
-
-Estructura General
+---
+#Estructura General
 El proyecto debe organizarse en paquetes:
 modelo
 controladores
 vista
 utils
+---
 Paquete Modelo
 Colores
 Se permiten dos colores: blancas y negras.
 Piezas
+---
 De todas las piezas se debe almacenar:
+
 La fila que ocupan (0-7)
 La columna que ocupan (0-7)
-El color al que pertenecen
+---
+#El color al que pertenecen
 Para crear cualquier pieza, se deben indicar su fila, su columna y su color. Se debe validar que la posición esté entre 0 y 7. Si la posición no está permitida se deberá lanzar una excepción IllegalArgumentException.
-Dada una pieza, se debe permitir:
+---
+#Dada una pieza, se debe permitir:
+
 Comprobar si puede mover a una casilla del tablero. Para ello se necesitará información sobre la nueva fila, la nueva columna y el tablero. Se deberá validar:
 Movimiento correcto según tipo de pieza
 Destino dentro del tablero
@@ -44,23 +53,28 @@ Que sea representada como cadena con el caracter correspondiente de UTF-8:
 ♚ ♛ ♜ ♝ ♞ ♟
 equals(), hashCode() y getters necesarios
 Piezas concretas
-Se deben contemplar las siguientes piezas:
+---
+#Se deben contemplar las siguientes piezas:
 Rey (100 puntos)
 Reina (9 puntos)
 Torre (5 puntos)
 Alfil (3 puntos)
 Caballo (3 puntos)
 Peon (1 punto)
+---
 Cada una debe controlar si puede mover, si puede atacar, especificar los puntos que vale y cómo se representa como cadena. En el caso del peón, recordar contemplar que en su posición inicial puede adelantar dos casillas, y que es la única pieza cuyo ataque es distinto de su movimiento.
-Piezas saltadoras
+---
+#Piezas saltadoras
 Las piezas saltadoras no necesitan comprobar si hay piezas intermedias para mover. La única pieza saltadora presente en el juego es el caballo, pero el juego se debe diseñar de forma que en un futuro se pudieran añadir más piezas saltadoras.
-Tablero
+---
+#Tablero
 El tablero debe ser serializable, para guardarlo, y clonable, por si deseamos hacer copias para evaluar si ciertas jugadas son válidas.
 El tablero debe almacenar:
 Una lista de piezas blancas en juego.
 Una lista de piezas negras en juego.
 Una lista de piezas eliminadas (sin importar el color).
 Al crear un tablero este se creará con todas las piezas colocadas en su posición inicial.
+
 El tablero deberá permitir:
 Vaciar las piezas
 Reiniciar el tablero a la posición inicial
@@ -75,7 +89,8 @@ Las casillas vacías se representan de la siguiente manera:
 ░ (blanca)
 ▓ (negra)
 Las casillas ocupadas se representan con el caracter UTF-8 de cada pieza.
-Paquete utils
+---
+#Paquete utils
 Se creará una clase Utils que albergue métodos auxiliares.
 
 Además, deberá crearse otra clase que gestione la persistencia de un tablero, de modo que implemente:
@@ -105,10 +120,11 @@ La pieza se pueda mover a dicha posición
 El movimiento no deje en jaque al rey del turno actual
 El color del turno cambie si el movimiento es correcto.
 Gestionar los menús, y las opciones seleccionadas.
-Paquete vista
+---
+#Paquete vista
 Se creará una clase que gestione la vista por consola, encargándose de mostrar menús, mensajes, de solicitar datos.
-
-Flujo de la aplicación
+---
+#Flujo de la aplicación
 Menú principal
 Al iniciar, la aplicación mostrará el estado de la partida y ofrecerá un menú con las siguientes opciones:
 Seleccionar pieza
@@ -123,7 +139,8 @@ Cancelar
 Si se cancela, se vuelve a imprimir el estado de la partida y el menú principal
 Si se indica un movimiento incorrecto, se vuelve a mostrar el menú de la pieza seleccionada
 Si el movimiento se realiza correctamente, se vuelve a imprimir el estado de la partida y el menú principal
-Metodología de trabajo
+---
+#Metodología de trabajo
 La metodología de trabajo estará basada en Scrum. Se trabajará por sprints, usando Trello como plataforma para gestionar las tareas pendientes, en proceso y hechas.
 Se utilizará el sistema git de control de versiones, y la forja GitHub.
 El jefe de equipo actuará también como Scrum Master, de modo que ademas de supervisar los PR, gestionará las daily meetings y los sprints.
