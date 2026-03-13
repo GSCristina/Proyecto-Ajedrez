@@ -1,10 +1,8 @@
 package model;
 
 public class Alfil extends Pieza {
-    public static final int PUNTOS=3;
-
     public Alfil(int fila, int columna, Color color, int puntos) {
-        super(fila, columna, color);
+        super(fila, columna, color, puntos);
     }
 
     @Override
@@ -14,7 +12,7 @@ public class Alfil extends Pieza {
 
     @Override
     public int obtenerPuntosPieza() {
-        return PUNTOS;
+        return this.puntos;
     }
 
     @Override
