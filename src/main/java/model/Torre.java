@@ -21,7 +21,7 @@ public class Torre extends Pieza {
             return false;
         }
         if (this.getFila() != nuevaFila && this.getColumna() != nuevaColumna) {
-            return false; // Si cambian las dos cosas, está intentando ir en diagonal
+            return false;
         }
         if (tablero.hayPiezasEntre(this.getFila(), this.getColumna(), nuevaFila, nuevaColumna)) {
             return false;
