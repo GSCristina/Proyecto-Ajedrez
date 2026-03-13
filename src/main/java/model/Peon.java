@@ -71,9 +71,7 @@ public class Peon extends Pieza {
     }
 
     @Override
-    public Pieza copiarPieza() {
-        return null;
-    }
+    public Pieza copiarPieza() {return  new Peon(this.getFila(), this.getColumna(), this.getColor(), this.puntos);}
 
     @Override
     protected char simbolo() {
