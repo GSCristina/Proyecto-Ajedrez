@@ -10,8 +10,8 @@ public class Reina extends Pieza {
      * Comprueba si la Reina puede moverse a una casilla.
      * La Reina se puede moverse en línea recta (horizontal, vertical o diagonal),
      * siempre y cuando no haya otras piezas bloqueando su trayectoria.
-     * @param nuevaFila La fila del tablero a la que se quiere mover la Torre.
-     * @param nuevaColumna La columna del tablero a la que se quiere mover la Torre.
+     * @param nuevaFila La fila del tablero a la que se quiere mover la Reina.
+     * @param nuevaColumna La columna del tablero a la que se quiere mover la Reina.
      * @param tablero El tablero actual, necesario para comprobar si hay obstáculos en el camino.
      * @return true si el movimiento es legal para la Reina; false si es inválido o está bloqueado.
      */
