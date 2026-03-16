@@ -1,10 +1,10 @@
 import model.Pieza;
 import model.Tablero;
+import controller.ControladorPartida;
 
 public class Main {
     static void main(String[] args) {
-        Tablero miTablero= new Tablero();
-        System.out.println(miTablero);
-
+        ControladorPartida juego = new ControladorPartida();
+        juego.iniciarPartida();
     }
 }

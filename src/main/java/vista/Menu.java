@@ -5,14 +5,13 @@ import utils.Utils;
 import java.util.Scanner;
 
 public class Menu {
-    private Scanner sc;
+
     public Menu() {
-        this.sc=new Scanner(System.in);
     }
     public int muestraMenu() {
 
         System.out.println("--- MENU PRINCIPAL ---");
-        System.out.print("1. Seleccionar pieza");
+        System.out.println("1. Seleccionar pieza");
         System.out.println("2. Reiniciar Tablero");
         System.out.println("3. Cargar Tablero");
         System.out.println("4. Guardar Tablero");
