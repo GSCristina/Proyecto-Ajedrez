@@ -23,17 +23,26 @@ public class Rey extends Pieza {
         }
         return difFila <= 1 && difColumna <= 1;
     }
-
+    /**
+     * Método que devuelve los puntos que vale un Rey
+     * @return (Los puntos asignados al Rey)
+     */
     @Override
     public int obtenerPuntosPieza() {
         return this.puntos;
     }
-
+    /**
+     * Crea y devuelve una copia exacta de este Rey.
+     * @return Una nueva instancia del Rey con la misma posición, color y puntuación que la original.
+     */
     @Override
     public Pieza copiarPieza() {
         return new Rey(this.getFila(), this.getColumna(), this.getColor(), this.puntos);
     }
-
+    /**
+     * Método con el cual representamos el peon en el tablero mediante su respectiva figura de UFT-8, basándonos en el color asignado.
+     * @return (El símbolo de peon blanco o negro, dependiendo del color que tenga)
+     */
     @Override
     protected char simbolo() {return this.getColor() == Color.BLANCA ? '♔' : '♚';}
 }
