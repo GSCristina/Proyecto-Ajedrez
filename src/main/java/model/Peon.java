@@ -10,6 +10,14 @@ public class Peon extends Pieza {
         super(fila, columna, color, puntos);
     }
 
+
+    /**
+     * Método que comprueba que el movimiento del peon es legal y posible dadas las circunstancias
+     * @param nuevaFila (Fila destino)
+     * @param nuevaColumna (Columna destino)
+     * @param tablero (Tablero actual en el que se basa la jugada)
+     * @return (True si es posible moverse o false si es imposible)
+     */
     @Override
     public boolean puedeMover(int nuevaFila, int nuevaColumna, Tablero tablero) {
         int direccion;  //Dirección en la que se puede mover el peón.
@@ -51,6 +59,13 @@ public class Peon extends Pieza {
         return false;
     }
 
+    /**
+     * Método que comprueba que el peon pueda atacar.
+     * @param piezaEnemiga (Pieza enemiga a la que comprobamos si puede atacar)
+     * @param tablero (Tablero actual en la que se basa la jugada)
+     * @return (True si puede realizar el ataque a la piezaEnemiga o false si no es posible)
+     */
+
     @Override
     public boolean puedeAtacar(Pieza piezaEnemiga, Tablero tablero){
 
@@ -65,14 +80,26 @@ public class Peon extends Pieza {
         return diferenciaFila == direccion && Math.abs(diferenciaColumna) == 1;
     }
 
+    /**
+     * Método que devuelve los puntos que vale un peon
+     * @return (Los puntos asignados al peon)
+     */
     @Override
     public int obtenerPuntosPieza() {
         return this.puntos;
     }
 
+    /**
+     * Método que permite copiar el estado de la pieza en el tablero, posicion, color y puntos
+     * @return (Devuelve un nuevo Peon que representa el peon en el momento que se copia)
+     */
     @Override
     public Pieza copiarPieza() {return  new Peon(this.getFila(), this.getColumna(), this.getColor(), this.puntos);}
 
+    /**
+     * Método con el cual representamos el peon en el tablero mediante su respectiva figura de UFT-8, basándonos en el color asignado.
+     * @return (El símbolo de peon blanco o negro, dependiendo del color que tenga)
+     */
     @Override
     protected char simbolo() {
         return this.getColor() == Color.BLANCA ? '♙' : '♟';
