@@ -1,35 +1,24 @@
 package utils;
 
+import java.util.Scanner;
+
 public class Utils {
 
-    //Convertir letra de columna a número -> "letraAColumna" (static)
+    public static void mostrarMensaje(String mensaje) {
 
-    static int letraAColumna(char letra) {
-        char minuscula = Character.toLowerCase(letra);
-        if (minuscula >= 'a' && minuscula <= 'h') {
-            return minuscula - 'a';
-        }
-        return -1;
+        System.out.println(mensaje);
     }
 
-
-    //Convertir número del ajedrez a fila de matriz -> "numeroAFila" (static)
-
-    static int numeroAFila(int numeroFilaAjedrez) {
-        if (numeroFilaAjedrez < 1 || numeroFilaAjedrez > 8) {
-            throw new IllegalArgumentException("El número de fila debe estar entre 1 y 8");
-        }
-        return 8 - numeroFilaAjedrez;
+    public static int pideEnteroAcotado(String mensaje, String mensajeError, int min, int max) {
+        int numero;
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println(mensaje);
+            numero = sc.nextInt();
+            if (numero < min || numero > max) {
+                System.out.println(mensajeError);
+            }
+        } while (numero < min || numero > max);
+        return numero;
     }
-
-    //Metodo validarFormatoJugada2 que recibe por parametro una jugada, si está vacío o no tiene la longitud exacta (5 letras: a2 a4) devuelve false.
-
-    public static boolean validarFormatoJugada2(String jugada) {
-        if (jugada == null || jugada.length() != 5) {
-            return false;
-        }
-        String formato = "[a-hA-H][1-8] [a-hA-H][1-8]";
-        return jugada.matches(formato);
-    }
-
 }

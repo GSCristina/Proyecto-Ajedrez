@@ -32,16 +32,6 @@ public class Menu {
         return opcion;
     }
 
-    public String pedirJugada(String colorTurno) {
-        System.out.println("Turno de las piezas"+ colorTurno);
-        System.out.print("Introduce tu jugada");
-        return sc.nextLine();
-    }
-
-    public static void mostrarMensaje(String mensaje) {
-
-        System.out.println(mensaje);
-    }
     public static void despedida() {
 
         System.out.println("Has terminado la partida");
