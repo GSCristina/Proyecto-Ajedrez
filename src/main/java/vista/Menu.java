@@ -1,5 +1,7 @@
 package vista;
 
+import utils.Utils;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -15,20 +17,16 @@ public class Menu {
         System.out.println("3. Cargar Tablero");
         System.out.println("4. Guardar Tablero");
         System.out.println("5. Salir");
-        System.out.print("Elige una opción:");
+        System.out.print("");
 
-        int opcion = sc.nextInt();
-        sc.nextLine();
+        int opcion = Utils.pideEnteroAcotado("Elige una opción:","Opción errónea",1,5);
         return opcion;
     }
     public int mostrarMenuPieza() {
         System.out.println("\n---Pieza Seleccionada ---");
         System.out.println("1. Mover");
         System.out.println("2. Cancelar");
-        System.out.print("Elige una opción:");
-
-        int opcion = sc.nextInt();
-        sc.nextLine();
+        int opcion = Utils.pideEnteroAcotado("Elige una opción:","Opción errónea",1,2);
         return opcion;
     }
 
