@@ -29,17 +29,26 @@ public class Reina extends Pieza {
         }
             return false;
     }
-
+    /**
+     * Método que devuelve los puntos que vale una Reina
+     * @return (Los puntos asignados a la Reina)
+     */
     @Override
     public int obtenerPuntosPieza() {
         return this.puntos;
     }
-
+    /**
+     * Crea y devuelve una copia exacta de esta Reina.
+     * @return Una nueva instancia de la Reina con la misma posición, color y puntuación que la original.
+     */
     @Override
     public Pieza copiarPieza() {
         return new Reina(this.getFila(), this.getColumna(), this.getColor(), this.puntos);
     }
-
+    /**
+     * Método con el cual representamos el peon en el tablero mediante su respectiva figura de UFT-8, basándonos en el color asignado.
+     * @return (El símbolo de peon blanco o negro, dependiendo del color que tenga)
+     */
     @Override
     protected char simbolo() {return this.getColor() == Color.BLANCA ? '♕' : '♛';}
 }

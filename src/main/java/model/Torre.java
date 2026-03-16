@@ -28,7 +28,10 @@ public class Torre extends Pieza {
         }
         return true;
     }
-
+    /**
+     * Método que devuelve los puntos que vale una Torre
+     * @return (Los puntos asignados a la Torre)
+     */
     @Override
     public int obtenerPuntosPieza() {
         return this.puntos;
@@ -42,7 +45,10 @@ public class Torre extends Pieza {
     public Pieza copiarPieza() {
         return new Torre(this.getFila(), this.getColumna(), this.getColor(), this.puntos);
     }
-
+    /**
+     * Método con el cual representamos el peon en el tablero mediante su respectiva figura de UFT-8, basándonos en el color asignado.
+     * @return (El símbolo de peon blanco o negro, dependiendo del color que tenga)
+     */
     @Override
     protected char simbolo() {return getColor() == Color.BLANCA ? '♖' : '♜';}
 }
