@@ -1,6 +1,11 @@
 package model;
 
 public class Reina extends Pieza {
+    /**
+     * Constructor vacio para Reina
+     */
+    public Reina() {
+    }
     public Reina(int fila, int columna, Color color, int puntos) {
         super(fila, columna, color, puntos);
     }
@@ -47,7 +52,7 @@ public class Reina extends Pieza {
     }
     /**
      * Método con el cual representamos el peon en el tablero mediante su respectiva figura de UFT-8, basándonos en el color asignado.
-     * @return (El símbolo de peon blanco o negro, dependiendo del color que tenga)
+     * @return (El símbolo de la reina blanco o negro, dependiendo del color que tenga)
      */
     @Override
     protected char simbolo() {return this.getColor() == Color.BLANCA ? '♕' : '♛';}

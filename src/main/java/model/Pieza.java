@@ -2,12 +2,23 @@ package model;
 
 import java.util.Objects;
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({Rey.class, Reina.class, Torre.class, Alfil.class, Caballo.class, Peon.class})
 public abstract class Pieza implements Serializable {
     private int fila;
     private int columna;
     private Color color;
-    protected final int puntos;
+    protected  int puntos;
+
+    /**
+     * Constructor vacio para el XML
+     */
+    public Pieza() {
+    }
 
     /**
     Constructor que lanza excepción si se sobrepasa de las filas y columnas límites,

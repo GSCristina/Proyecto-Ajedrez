@@ -1,7 +1,11 @@
 package model;
 
 public class Caballo extends Pieza implements PiezaSaltadora{
-
+    /**
+     * Constuctor vacio para XML
+     */
+    public Caballo() {
+    }
     public Caballo(int fila, int columna, Color color, int puntos) {
         super(fila, columna, color, puntos);
     }
@@ -44,16 +48,26 @@ public class Caballo extends Pieza implements PiezaSaltadora{
 
         return movimientoValido;
     }
+    /**
+     * Método con el cual representamos el peon en el tablero mediante su respectiva figura de UFT-8, basándonos en el color asignado.
+     * @return (El símbolo del caballo blanco o negro, dependiendo del color que tenga)
+     */
     @Override
     protected char simbolo() {
         return getColor() == Color.BLANCA ? '♘' : '♞';
     }
-
+    /**
+     * Método que devuelve los puntos que vale un Caballo
+     * @return (Los puntos asignados al Caballo)
+     */
     @Override
     public int obtenerPuntosPieza() {
         return this.puntos;
     }
-
+    /**
+     * Crea y devuelve una copia exacta de este Caballo.
+     * @return Una nueva instancia del caballo con la misma posición, color y puntuación que la original.
+     */
     @Override
     public Pieza copiarPieza() {
         return new Caballo(this.getFila(),this.getColumna(),this.getColor(),this.puntos);

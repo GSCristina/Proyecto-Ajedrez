@@ -6,6 +6,12 @@ import model.Tablero;
 import model.Pieza;
 
 public class Peon extends Pieza {
+    /**
+     * Constructor vacio para el XML
+     */
+    public Peon() {
+    }
+
     public Peon(int fila, int columna, Color color, int puntos) {
         super(fila, columna, color, puntos);
     }
