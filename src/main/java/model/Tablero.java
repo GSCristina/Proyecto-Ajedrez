@@ -179,8 +179,6 @@ public class Tablero implements Serializable {
         if (fDest < 0 || fDest > 7 || cDest < 0 || cDest > 7) {
             throw new IllegalArgumentException("No se puede mover la pieza fuera del tablero");
         }
-
-
         Pieza piezaDestino = obtenerPieza(fDest, cDest);
         if (piezaDestino != null) {
             if (piezaDestino instanceof Rey) {
@@ -189,6 +187,9 @@ public class Tablero implements Serializable {
             if (piezaDestino.getColor() == piezaAMover.getColor()) {
                 throw new IllegalArgumentException("No puedes atacar una pieza de tu mismo color");
             }
+        }
+        piezaAMover.mover(fDest, cDest, this);
+        if (piezaDestino != null) {
             if (piezaDestino.getColor() == Color.BLANCA) {
                 piezasBlancas.remove(piezaDestino);
             } else {
@@ -196,7 +197,6 @@ public class Tablero implements Serializable {
             }
             piezasEliminadas.add(piezaDestino);
         }
-        piezaAMover.mover(fDest, cDest, this);
     }
 
     /**

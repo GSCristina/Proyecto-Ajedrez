@@ -45,6 +45,8 @@ public class ControladorPartida {
             switch (opcion){
 
                 case 1:
+                    System.out.println("\n");
+                    System.out.println(tablero);
                     seleccionarPieza();
                     break;
 
