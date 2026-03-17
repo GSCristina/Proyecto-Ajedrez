@@ -140,14 +140,24 @@ public class ControladorPartida {
         int columnaDestino = Utils.pideEnteroAcotado("Introduce columna destino (0-7)", "Columna incorrecta",0,7);
 
         try{
-
+            Tablero tableroClonado = tablero.obtenerCopia();
+            tableroClonado.moverYatacar(
+                    piezaSeleccionada.getFila(),
+                    piezaSeleccionada.getColumna(),
+                    filaDestino,
+                    columnaDestino
+            );
+            if (tableroClonado.estaEnJaque(turno)){
+                Utils.mostrarMensaje("Movimiento invalido: Estás dejando a tu Rey en Jaque.");
+                piezaSeleccionada=null;
+                return;
+            }
             tablero.moverYatacar(
                     piezaSeleccionada.getFila(),
                     piezaSeleccionada.getColumna(),
                     filaDestino,
                     columnaDestino
             );
-
             cambiarTurno();
 
         }catch(Exception e){
