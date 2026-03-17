@@ -20,12 +20,8 @@ public class Peon extends Pieza {
      */
     @Override
     public boolean puedeMover(int nuevaFila, int nuevaColumna, Tablero tablero) {
-        int direccion;  //Dirección en la que se puede mover el peón.
-        int filaInicial;    //Fila en la que empieza el peón.
-
-        /**
-         * Determina la dirección en las que se mueven y la fila inicial de los peones basandose en el color.
-         */
+        int direccion;
+        int filaInicial;
 
         if(getColor() == Color.BLANCA){
             direccion = -1;
@@ -34,21 +30,21 @@ public class Peon extends Pieza {
             direccion = 1;
             filaInicial = 1;
         }
+
         int diferenciaFila = nuevaFila - getFila();
         int diferenciaColumna = nuevaColumna - getColumna();
+
         Pieza destino = tablero.obtenerPieza(nuevaFila,nuevaColumna);
 
+        // Movimiento hacia delante
         if(diferenciaColumna == 0){
-            /**
-             * Avance de una casilla
-             */
+
+            // Avance de una casilla
             if(diferenciaFila == direccion && destino == null){
                 return true;
             }
 
-            /**
-             * Avance de dos casillas(Solo en posición original)
-             */
+            // Avance de dos casillas desde posición inicial
             if (getFila() == filaInicial &&
                     diferenciaFila == 2 * direccion &&
                     destino == null &&
@@ -56,6 +52,15 @@ public class Peon extends Pieza {
                 return true;
             }
         }
+
+        // Ataque diagonal
+        if (Math.abs(diferenciaColumna) == 1 &&
+                diferenciaFila == direccion &&
+                destino != null &&
+                destino.getColor() != getColor()) {
+            return true;
+        }
+
         return false;
     }
 
