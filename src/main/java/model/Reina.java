@@ -1,5 +1,9 @@
 package model;
 
+/**
+ *
+ * Clase que simula el funcionamiento de la pieza "Reina" en el programa
+ */
 public class Reina extends Pieza {
     /**
      * Constructor vacio para Reina

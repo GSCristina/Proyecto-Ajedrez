@@ -1,5 +1,9 @@
 package model;
 
+/**
+ *
+ * Clase que simula el funcionamiento de la pieza "Torre" en el programa
+ */
 public class Torre extends Pieza {
     /**
      * Constructor vacio para XML

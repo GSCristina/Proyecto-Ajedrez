@@ -1,5 +1,9 @@
 package model;
 
+/**
+ *
+ * Clase que simula el funcionamiento de la pieza "Rey" en el programa
+ */
 public class Rey extends Pieza {
     /**
      * Constructor vacio para el XML

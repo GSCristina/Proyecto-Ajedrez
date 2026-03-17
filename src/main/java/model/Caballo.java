@@ -1,5 +1,9 @@
 package model;
 
+/**
+ *
+ * Clase que simula el funcionamiento de la pieza "Caballo" en el programa
+ */
 public class Caballo extends Pieza implements PiezaSaltadora{
     /**
      * Constuctor vacio para XML

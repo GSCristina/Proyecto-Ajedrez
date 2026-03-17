@@ -1,5 +1,9 @@
 package model;
 
+/**
+ *
+ * Clase que simula el funcionamiento de la pieza "Alfil" en el programa
+ */
 public class Alfil extends Pieza {
     /**
      * Constructor vacio para Xml

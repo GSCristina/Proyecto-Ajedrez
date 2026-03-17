@@ -5,6 +5,10 @@ import model.Pieza;
 import model.Tablero;
 import model.Pieza;
 
+/**
+ *
+ * Clase que simula el funcionamiento de la pieza "Peon" en el programa
+ */
 public class Peon extends Pieza {
     /**
      * Constructor vacio para el XML
@@ -58,8 +62,6 @@ public class Peon extends Pieza {
                 return true;
             }
         }
-
-        // Ataque diagonal
         if (Math.abs(diferenciaColumna) == 1 &&
                 diferenciaFila == direccion &&
                 destino != null &&

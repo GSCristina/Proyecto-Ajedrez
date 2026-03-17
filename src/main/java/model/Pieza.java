@@ -8,6 +8,11 @@ import javax.xml.bind.annotation.XmlAccessorType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlSeeAlso({Rey.class, Reina.class, Torre.class, Alfil.class, Caballo.class, Peon.class})
+
+/**
+ *
+ * Clase que maneja el funcionamiento básico que heredarán las demás piezas en el programa
+ */
 public abstract class Pieza implements Serializable {
     private int fila;
     private int columna;

@@ -2,6 +2,10 @@ package utils;
 
 import java.util.Scanner;
 
+/**
+ *
+ * Clase que contiene los métodos usados para diversos métodos
+ */
 public class Utils {
 
     /**
