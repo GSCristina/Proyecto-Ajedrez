@@ -37,7 +37,7 @@ public class Tablero implements Serializable {
         piezasNegras.add(new Alfil(0, 2, Color.NEGRA,3));
         piezasNegras.add(new Reina(0, 3, Color.NEGRA,9));
         piezasNegras.add(new Rey(0, 4, Color.NEGRA,100));
-        piezasNegras.add(new Alfil(0, 5, Color.NEGRA,9));
+        piezasNegras.add(new Alfil(0, 5, Color.NEGRA,3));
         piezasNegras.add(new Caballo(0, 6, Color.NEGRA,3));
         piezasNegras.add(new Torre(0, 7, Color.NEGRA,5));
 
@@ -51,10 +51,10 @@ public class Tablero implements Serializable {
 
         piezasBlancas.add(new Torre(7, 0, Color.BLANCA,5));
         piezasBlancas.add(new Caballo(7, 1, Color.BLANCA,3));
-        piezasBlancas.add(new Alfil(7, 2, Color.BLANCA,9));
+        piezasBlancas.add(new Alfil(7, 2, Color.BLANCA,3));
         piezasBlancas.add(new Reina(7, 3, Color.BLANCA,9));
         piezasBlancas.add(new Rey(7, 4, Color.BLANCA,100));
-        piezasBlancas.add(new Alfil(7, 5, Color.BLANCA,9));
+        piezasBlancas.add(new Alfil(7, 5, Color.BLANCA,3));
         piezasBlancas.add(new Caballo(7, 6, Color.BLANCA,3));
         piezasBlancas.add(new Torre(7, 7, Color.BLANCA,5));
     }
