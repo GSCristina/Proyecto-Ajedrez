@@ -5,6 +5,10 @@ import utils.Utils;
 import java.util.Scanner;
 
 
+/**
+ * Clase utilizada para el menu del juego, donde saldra un menu princial, un menu para la pieza
+ * seleccionada y una despedida al salir del juego
+ */
 public class Menu {
 
     public Menu() {

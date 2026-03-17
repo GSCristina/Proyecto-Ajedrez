@@ -8,6 +8,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase donde albergamos la logica del Tablero con metodos como (inicializarTablero, obtenerPieza, vaciarPiezas,
+ * reiniciarTablero, obtenerPuntuacion, añadirPieza, obtenerCopia, moverYatacar, hayPiezasEntre y estaEnJaque)
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name="tablero")
 public class Tablero implements Serializable {
