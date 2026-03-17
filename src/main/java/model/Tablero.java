@@ -272,7 +272,7 @@ public class Tablero implements Serializable {
         String tableroDibujado = "";
 
         for (int fila = 0; fila < 8; fila++) {
-            tableroDibujado += (8 - fila) + " ";
+            tableroDibujado += (fila) + " ";
 
             for (int col = 0; col < 8; col++) {
                 Pieza p = obtenerPieza(fila, col);
@@ -291,7 +291,7 @@ public class Tablero implements Serializable {
             }
             tableroDibujado += "\n";
         }
-        tableroDibujado += "  1  2  3  4 5  6 7  8\n";
+        tableroDibujado += "  0  1  2  3  4 5 6 7 \n";
         return tableroDibujado;
     }
 }
